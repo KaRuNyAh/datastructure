@@ -62,7 +62,7 @@ void main ()
 }  
 void beginsert()  
 {  
-    struct node *ptr;  
+    struct node *ptr;  //why this node?
     int item;  
     ptr = (struct node *) malloc(sizeof(struct node *));  
     if(ptr == NULL)  
@@ -75,14 +75,14 @@ void beginsert()
         scanf("%d",&item);    
         ptr->data = item;  
         ptr->next = head;  
-        head = ptr;  
+        head = ptr;  //why this?
         printf("\nNode inserted");  
     }  
       
 }  
 void lastinsert()  
 {  
-    struct node *ptr,*temp;  
+    struct node *ptr,*temp;  //?
     int item;     
     ptr = (struct node*)malloc(sizeof(struct node));      
     if(ptr == NULL)  
@@ -97,7 +97,7 @@ void lastinsert()
         if(head == NULL)  
         {  
             ptr -> next = NULL;  
-            head = ptr;  
+            head = ptr;  //?
             printf("\nNode inserted");  
         }  
         else  
@@ -107,8 +107,8 @@ void lastinsert()
             {  
                 temp = temp -> next;  
             }  
-            temp->next = ptr;  
-            ptr->next = NULL;  
+            temp->next = ptr;  ?
+            ptr->next = NULL;  ?
             printf("\nNode inserted");  
           
         }  
