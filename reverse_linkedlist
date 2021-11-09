@@ -1,0 +1,103 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+#include<stdio.h>  
+#include<stdlib.h>  
+struct node   
+{  
+    int data;  
+    struct node *next;   
+};  
+struct node *head;
+void display()  
+{  
+    struct node *temp;  
+    temp = head;   
+    if(temp == NULL)  
+    {  
+        printf("Nothing to print");  
+    }  
+    else  
+    {  
+        printf("\nprinting values . . . . .\n");   
+        while (temp!=NULL)  
+        {  
+            printf("\n%d",temp->data);  
+            temp = temp -> next;  
+        }  
+    }  
+}
+void lastinsert()  
+{  
+    struct node *ptr,*temp;  //?
+    int item;     
+    ptr = (struct node*)malloc(sizeof(struct node));      
+    if(ptr == NULL)  
+    {  
+        printf("\nOVERFLOW");     
+    }  
+    else  
+    {  
+        printf("\nEnter value?\n");  
+        scanf("%d",&item);  
+        ptr->data = item;  
+        if(head == NULL)  
+        {  
+            ptr -> next = NULL;  
+            head = ptr;  //?
+            printf("\nNode inserted");  
+        }  
+        else  
+        {  
+            temp = head;  
+            while (temp -> next != NULL)  
+            {  
+                temp = temp -> next;  
+            }  
+            temp->next = ptr;  //?
+            ptr->next = NULL; // ?
+            printf("\nNode inserted");  
+          
+        }  
+    }  
+}  
+void rev(){
+    struct node *pre,*cur,*nxt;
+    pre=NULL;
+    cur=head;
+    nxt=head;
+    while(nxt!=NULL){
+        nxt=nxt->next;
+        cur->next=pre;
+        pre=cur;
+        cur=nxt;
+    }
+  head=pre;//
+}
+void len(){
+    struct node *ptr,*temp;  
+    int count=0;
+    temp=head;
+    while(temp!=NULL){
+        count++;
+        temp=temp->next;
+    }
+    printf("\nlen%d",count);
+}
+int main()
+{
+    for(int i=0;i<5;i++)
+    {
+        lastinsert();
+    }
+    printf("Before rev");
+    display();
+    len();
+    rev();
+    printf("after rev");
+    display();
+}
