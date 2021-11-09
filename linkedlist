@@ -1,5 +1,5 @@
 #include<stdio.h>  
-#include<stdlib.h>  
+#include<stdlib.h> //singly linkedlist 
 struct node   
 {  
     int data;  
@@ -62,9 +62,9 @@ void main ()
 }  
 void beginsert()  
 {  
-    struct node *ptr;  //why this node?
+    struct node *ptr;  //why this node?..this is defining the variable
     int item;  
-    ptr = (struct node *) malloc(sizeof(struct node *));  
+    ptr = (struct node *) malloc(sizeof(struct node *));  //fully structured node means two box
     if(ptr == NULL)  
     {  
         printf("\nOVERFLOW");  
@@ -82,7 +82,7 @@ void beginsert()
 }  
 void lastinsert()  
 {  
-    struct node *ptr,*temp;  //?
+    struct node *ptr,*temp;  //temp is temporary variable to point nodes..so there is no malloc..
     int item;     
     ptr = (struct node*)malloc(sizeof(struct node));      
     if(ptr == NULL)  
@@ -93,7 +93,7 @@ void lastinsert()
     {  
         printf("\nEnter value?\n");  
         scanf("%d",&item);  
-        ptr->data = item;  
+        ptr->data = item;  // pointer -> data/addr
         if(head == NULL)  
         {  
             ptr -> next = NULL;  
@@ -107,8 +107,8 @@ void lastinsert()
             {  
                 temp = temp -> next;  
             }  
-            temp->next = ptr;  ?
-            ptr->next = NULL;  ?
+            temp->next = ptr;  
+            ptr->next = NULL; 
             printf("\nNode inserted");  
           
         }  
