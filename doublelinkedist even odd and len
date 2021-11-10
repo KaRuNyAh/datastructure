@@ -1,0 +1,93 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+#include<stdio.h>  
+#include<stdlib.h>  
+struct node{
+    struct node *next;
+    int data;
+    struct node *pre;
+};
+struct node *head,*temp;
+void last_insert(){
+    struct node *newnode;
+    int item;
+    newnode=(struct node*)malloc(sizeof(struct node));
+    if(newnode==NULL)
+     printf("overflow");
+    else
+    {
+        printf("enter the value");
+        scanf("%d",&item);
+        newnode->data=item;
+        if(head==NULL)
+        {
+            newnode->pre=NULL;
+            newnode->next=NULL;
+            head=newnode;
+        }
+        else
+        {
+            temp=head;
+            while(temp->next!=NULL)
+            {
+                temp=temp->next;
+            }
+            temp->next=newnode;
+            newnode->pre=temp;
+            newnode->next=NULL;
+        }
+    }
+    
+    printf("\nNode is inserted\n");
+}
+void display(){
+    struct node *newnode;
+    newnode=head;
+    printf("\neven items:");
+    while(newnode!=NULL)
+    {
+        if(newnode->data%2==0){
+        printf("%d",newnode->data);
+        }
+        newnode=newnode->next;
+    }
+    printf("\nodd items:");
+    newnode=head;
+    while(newnode!=NULL)
+    {
+        if(newnode->data%2==1){
+        printf("%d",newnode->data);
+        }
+        newnode=newnode->next;
+    }
+    
+}
+void len(){
+    int l=0;
+    struct node *newnode,*temp;
+    temp=head;
+    while(temp!=NULL){
+        l++;
+        temp=temp->next;
+     
+    }
+    printf("\nlen is: %d",l);
+}
+int main()
+{
+    for(int i=0;i<5;i++)
+    {
+        last_insert();
+    }
+    
+    display();
+    len();
+}
+
+
+
